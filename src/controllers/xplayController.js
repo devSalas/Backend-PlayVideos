@@ -15,12 +15,20 @@ const createVideo=async(req,res)=>{
   console.log(req.body,15)
   const Video= await databaseVideo.createVideo(req.body);
   console.log(Video,17)
-/*   if(typeof(Video)!='array'){
-    res.json({"message":"ocurrio un error"})
-  }else{ */
+
   res.json(Video)
-  
- /*  } */
+
+}
+const deleteVideo=async(req,res)=>{
+  const {body} = req
+  const {videoId}=req.params
+  /* console.log(req.body) */
+
+  const Video= await databaseVideo.deleteVideo(body,videoId);
+/*   console.log(Video,17) */
+
+  res.json(Video)
+
 }
 
 
@@ -28,5 +36,6 @@ const createVideo=async(req,res)=>{
 
 module.exports={
   getVideos,
-  createVideo
+  createVideo,
+  deleteVideo
 }

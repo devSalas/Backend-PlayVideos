@@ -12,6 +12,7 @@ const videoSchema=new Schema({
 
 const Video = model("Video",videoSchema)
  */
+
 const { default: mongoose } = require("mongoose")
 const Video= require("./models/video")
 
@@ -37,12 +38,20 @@ const createVideo =async (body)=>{
   return newVideo.save()
 
 }
+const deleteVideo =async (body)=>{
+
+  const {id}= body
+  Video.findOneAndDelete({id:id})  
+  return newVideo.save()
+
+}
 
 
 
 module.exports={
   getVideos,
-  createVideo
+  createVideo,
+  deleteVideo
 }
 
 /* Video.find({})

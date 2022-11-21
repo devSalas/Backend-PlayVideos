@@ -6,8 +6,11 @@ const xplayController= require('../../controllers/xplayController')
 
 router
   .get(("/videos"),xplayController.getVideos)
-  
+
   .post(("/videos"),xplayController.createVideo)
+  
+  .del(("/videos/:videoId"),xplayController.deleteVideo)
+
   
 
 
