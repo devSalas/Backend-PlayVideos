@@ -6,8 +6,16 @@ const videoSchema=new Schema({
   date: Date,
   comment:Array,
   like:Number,
+  dislike:Number,
   url:String,
-  owner:String
+  user:{
+    id:String,
+    name:String,
+    image:String,
+    subscribers:Number,
+  },
+  img:String
+
 })
 
 videoSchema.set('toJSON',{
