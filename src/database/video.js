@@ -24,7 +24,7 @@ const getVideos =async ()=>{
 const createVideo =async (body)=>{
 
   const {title,date,comments,like,url,user,img,dislike}=body
-  if( !title || !date ||!comments || !url || !user ) return 
+  if( !title ||!comments || !url || !user ) return 
   
   const newVideo= new Video({
     title,
@@ -36,31 +36,19 @@ const createVideo =async (body)=>{
     date:new Date(),
     comments:[]
 
-    /* 
-    {"_id":{"$oid":"637b93fe3d65ebcb1d40bd5a"},
-    "title":"la tranquilidad de la rana",
-
-    "url":"https://res.cloudinary.com/dzlog8uxo/video/upload/v1668809492/dev/Rana_hoof1v.mp4",
-    "img":""
-    ,"user":{"name":"alvaro","image":"https://avatars.githubusercontent.com/u/72365664?v=4","id":"2","subscribers":{"$numberInt":"0"}},
-    "like":{"$numberInt":"20"},
-    "dislike":{"$numberInt":"30"},
-    "date":"",
-    "comments":[
-      {"id":"2","user":{"id":"1","name":"Gerson","image":"https://avatars.githubusercontent.com/u/100030169?v=4"},
-      "content":"buen video sigue asi, y llegaras a trabajar en faceboo,k","date":"21-11-22"}]} */
 
   })
   
   return newVideo.save()
 
 }
-const deleteVideo =async (body)=>{
+const deleteVideo =async (videoId)=>{
+  console.log(videoId,46)
+  return Video.findByIdAndDelete(videoId)  
+}
+const updateVideo =async (videoId,body)=>{
 
-  const {id}= body
-  Video.findOneAndDelete({id:id})  
-  return newVideo.save()
-
+  return Video.findOneAndUpdate({id:videoId},body)  
 }
 
 
@@ -68,7 +56,8 @@ const deleteVideo =async (body)=>{
 module.exports={
   getVideos,
   createVideo,
-  deleteVideo
+  deleteVideo,
+  updateVideo 
 }
 
 /* Video.find({})

@@ -11,7 +11,7 @@ const getVideos=async (req,res)=>{
 }
 
 
-const createVideo=async(req,res)=>{
+const createVideo=async (req,res)=>{
   console.log(req.body,15)
   const Video= await databaseVideo.createVideo(req.body);
   console.log(Video,17)
@@ -19,15 +19,22 @@ const createVideo=async(req,res)=>{
   res.json(Video)
 
 }
-const deleteVideo=async(req,res)=>{
+const  updateVideo=async(req,res)=>{
   const {body} = req
   const {videoId}=req.params
   /* console.log(req.body) */
 
-  const Video= await databaseVideo.deleteVideo(body,videoId);
-/*   console.log(Video,17) */
+  const Video= await databaseVideo.updateVideo(body,videoId)
 
   res.json(Video)
+
+}
+const deleteVideo=async(req,res)=>{
+
+  const {videoId}=req.params
+  console.log(videoId,35)
+  const Video= await databaseVideo.deleteVideo(videoId);
+  res.json(Video) 
 
 }
 
@@ -37,5 +44,6 @@ const deleteVideo=async(req,res)=>{
 module.exports={
   getVideos,
   createVideo,
-  deleteVideo
+  deleteVideo,
+  updateVideo
 }

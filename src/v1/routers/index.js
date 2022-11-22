@@ -5,13 +5,17 @@ const xplayController= require('../../controllers/xplayController')
 
 
 router
+  
+  .get("/",(req,res)=>{
+    res.send("home")
+  })
+
   .get(("/videos"),xplayController.getVideos)
 
   .post(("/videos"),xplayController.createVideo)
   
-  .del(("/videos/:videoId"),xplayController.deleteVideo)
+  .patch(("/videos/:videoId"),xplayController.updateVideo)
 
-  
-
+  .delete(("/videos/:videoId"),xplayController.deleteVideo)
 
 module.exports=router 
