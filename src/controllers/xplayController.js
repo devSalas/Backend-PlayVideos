@@ -12,6 +12,7 @@ const getVideos=async (req,res)=>{
 
 
 const createVideo=async (req,res)=>{
+
   console.log(req.body,15)
   const Video= await databaseVideo.createVideo(req.body);
   console.log(Video,17)
@@ -24,15 +25,15 @@ const  updateVideo=async(req,res)=>{
   const {videoId}=req.params
   /* console.log(req.body) */
 
-  const Video= await databaseVideo.updateVideo(body,videoId)
+  const Video= await databaseVideo.updateVideo(videoId,body)
 
   res.json(Video)
 
 }
 const deleteVideo=async(req,res)=>{
 
-  const {videoId}=req.params
   console.log(videoId,35)
+  const {videoId}=req.params
   const Video= await databaseVideo.deleteVideo(videoId);
   res.json(Video) 
 

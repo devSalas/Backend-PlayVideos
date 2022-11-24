@@ -48,7 +48,9 @@ const deleteVideo =async (videoId)=>{
 }
 const updateVideo =async (videoId,body)=>{
 
-  return Video.findOneAndUpdate({id:videoId},body)  
+  console.log("llego aqui,51")
+  return Video.findByIdAndUpdate(videoId,body)
+
 }
 
 
