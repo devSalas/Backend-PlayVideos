@@ -14,6 +14,7 @@ const Video = model("Video",videoSchema)
  */
 
 const { default: mongoose } = require("mongoose")
+
 const Video= require("./models/video")
 
 const getVideos =async ()=>{
@@ -21,27 +22,30 @@ const getVideos =async ()=>{
   return await Video.find({})
 
 }
+
+
+
 const createVideo =async (body)=>{
 
-  const {title,date,comments,like,url,user,img,dislike}=body
-  if( !title ||!comments || !url || !user ) return 
+  const {title,like,dislike,idUser,img,category,url,date}=body
+  if( !title || !url || !idUser  ) return 
   
   const newVideo= new Video({
     title,
-    url,
-    img,
-    user,
-    dislike,
     like,
+    dislike,
+    idUser,
+    img,
+    category,
+    url,
     date:new Date(),
-    comments:[]
-
-
   })
   
   return newVideo.save()
 
 }
+
+
 const deleteVideo =async (videoId)=>{
   console.log(videoId,46)
   return Video.findByIdAndDelete(videoId)  

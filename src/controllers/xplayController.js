@@ -31,8 +31,6 @@ const  updateVideo=async(req,res)=>{
 
 }
 const deleteVideo=async(req,res)=>{
-
-  console.log(videoId,35)
   const {videoId}=req.params
   const Video= await databaseVideo.deleteVideo(videoId);
   res.json(Video) 

@@ -3,20 +3,17 @@ const {Schema, model}= require('mongoose')
 
 const videoSchema=new Schema({
   title:String,
-  date: Date,
-  comment:Array,
   like:Number,
   dislike:Number,
+  idUser:String,
+  img:String,
+  category:Array,
   url:String,
-  user:{
-    id:String,
-    name:String,
-    image:String,
-    subscribers:Number,
-  },
-  img:String
+  date:Date
 
 })
+
+
 
 videoSchema.set('toJSON',{
   transform:(document,returnedObject)=>{
@@ -25,6 +22,7 @@ videoSchema.set('toJSON',{
     delete returnedObject.__v
   }
 })
+
 
 
 const Video = model("Video",videoSchema)
