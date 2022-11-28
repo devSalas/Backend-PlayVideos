@@ -9,7 +9,7 @@ const CommentsVideoSchema = new Schema({
     img:String,
     text:String
     }
-  ],
+  ]
 
 
 })
@@ -21,7 +21,7 @@ CommentsVideoSchema.set('toJSON',{
   }
 })
 
-const Comment= model("Comentario",UserSchema)
+const Comment= model("Comentario",CommentsVideoSchema)
 
 module.exports = Comment
 

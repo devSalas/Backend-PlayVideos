@@ -1,7 +1,7 @@
 
 const { default: mongoose } = require("mongoose")
 
-const Comment = require("mongoose")
+const Comment = require("./models/comment")
 
 const getComments =async ()=>{
 
@@ -16,7 +16,7 @@ const createComment =async (body)=>{
   const {idVideo, comments} = body
     if(!idVideo ) return 
   
-  const newComment= new User({
+  const newComment= new Comment({
     idVideo,
     comments
   })
