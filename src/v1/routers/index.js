@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const xplayController= require('../../controllers/xplayController')
 const userController=require('../../controllers/userController')
-const commentController=require('../../controllers/commentsController')
+const commentController=require('../../controllers/commentController')
 
 
 
@@ -30,13 +30,13 @@ router
   .delete(("/user/:userId"),userController.deleteUser)
 
   /* commentarios */
-  .get(("/comments"),userController.getUsers)
+  .get(("/comments"),commentController.getComments)
 
-  .post(("/user"),userController.createUser)
+  .post(("/comment"),commentController.createComment)
   
-  .patch(("/user/:userId"),userController.updateUser)
+  .patch(("/comment/:commentId"),commentController.updateComment)
 
-  .delete(("/user/:userId"),userController.deleteUser)
+  .delete(("/comment/:commentId"),commentController.deleteComment)
 
 
 module.exports=router 

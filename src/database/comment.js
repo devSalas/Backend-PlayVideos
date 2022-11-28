@@ -1,7 +1,7 @@
 
 const { default: mongoose } = require("mongoose")
 
-const Comment = mongoose.require("./models/comment")
+const Comment = require("mongoose")
 
 const getComments =async ()=>{
 
