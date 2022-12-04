@@ -22,6 +22,10 @@ const getVideos =async ()=>{
   return await Video.find({})
 
 }
+const getVideo =async (id)=>{
+
+  return await Video.findById(id)
+}
 
 
 
@@ -61,6 +65,7 @@ const updateVideo =async (videoId,body)=>{
 
 module.exports={
   getVideos,
+  getVideo, 
   createVideo,
   deleteVideo,
   updateVideo 

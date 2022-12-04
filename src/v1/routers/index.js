@@ -13,6 +13,8 @@ router
   })
   /* videos */
   .get(("/videos"),xplayController.getVideos)
+  
+  .get(("/videos/:videoId"),xplayController.getVideo)
 
   .post(("/videos"),xplayController.createVideo)
   
@@ -22,6 +24,8 @@ router
 
   /* usuario  */
   .get(("/users"),userController.getUsers)
+  
+  .get(("/users/:userId"),userController.getUser)
 
   .post(("/user"),userController.createUser)
   
@@ -31,6 +35,8 @@ router
 
   /* commentarios */
   .get(("/comments"),commentController.getComments)
+  
+  .get(("/comments/:commentId"),commentController.getComment)
 
   .post(("/comment"),commentController.createComment)
   

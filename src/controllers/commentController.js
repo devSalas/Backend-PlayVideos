@@ -10,6 +10,15 @@ const getComments=async (req,res)=>{
       res.json(comments)
   }
 }
+const getComment=async (req,res)=>{
+  const {commentId}=req.params
+  const comment= await databaseComment.getComment(commentId);
+  if(comment.length==0){
+    res.json({"message":"no se encontro video"})
+  }else{
+      res.json(comment)
+  }
+}
 
 
 const createComment=async (req,res)=>{
@@ -42,6 +51,7 @@ const deleteComment=async(req,res)=>{
 
 module.exports={
   getComments,
+  getComment,
   createComment,
   deleteComment,
   updateComment

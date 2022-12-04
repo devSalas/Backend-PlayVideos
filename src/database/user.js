@@ -8,6 +8,11 @@ const getUsers =async ()=>{
   return await User.find({})
 
 }
+const getUser =async (id)=>{
+  console.log(id,12)
+  return await User.findById(id)
+
+}
 
 
 
@@ -45,6 +50,7 @@ const updateUser =async (userId,body)=>{
 
 module.exports={
   getUsers,
+  getUser,
   createUser,
   deleteUser,
   updateUser 

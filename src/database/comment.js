@@ -4,11 +4,12 @@ const { default: mongoose } = require("mongoose")
 const Comment = require("./models/comment")
 
 const getComments =async ()=>{
-
   return await Comment.find({})
-
 }
 
+const getComment =async (id)=>{
+  return await Comment.findById(id)
+}
 
 
 const createComment =async (body)=>{
@@ -43,6 +44,7 @@ const updateComment =async (userId,body)=>{
 
 module.exports={
   getComments,
+  getComment,
   createComment,
   deleteComment,
   updateComment 

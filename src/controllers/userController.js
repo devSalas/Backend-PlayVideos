@@ -11,6 +11,17 @@ const getUsers=async (req,res)=>{
   }
 }
 
+const getUser=async (req,res)=>{
+  const {userId} = req.params
+  console.log(userId)
+  const User= await databaseUser.getUser(userId);
+  if(User.length==0){
+    res.json({"message":"no se encontro video"})
+  }else{
+      res.json(User)
+  }
+}
+
 
 const createUser=async (req,res)=>{
 
@@ -44,6 +55,7 @@ const deleteUser=async(req,res)=>{
 
 module.exports={
   getUsers,
+  getUser,
   createUser,
   deleteUser,
   updateUser
