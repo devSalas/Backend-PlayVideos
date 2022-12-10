@@ -22,9 +22,10 @@ const getComment=async (req,res)=>{
 
 
 const createComment=async (req,res)=>{
-
-  console.log(req.body,15)
-  const comment= await databaseComment.createComment(req.body);
+  const {videoId}=req.params
+  const {body}=req
+  /* console.log(27,videoId,body) */
+  const comment= await databaseComment.createComment(videoId,body);
 
   res.json(comment)
 

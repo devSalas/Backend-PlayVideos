@@ -23,6 +23,8 @@ router
   .delete(("/videos/:videoId"),xplayController.deleteVideo)
 
   /* usuario  */
+  .post(("/verificarUsuario"),userController.verificarUsuario)
+
   .get(("/users"),userController.getUsers)
   
   .get(("/users/:userId"),userController.getUser)
@@ -38,11 +40,18 @@ router
   
   .get(("/comments/:commentId"),commentController.getComment)
 
-  .post(("/comment"),commentController.createComment)
+  .post(("/comments/:videoId"),commentController.createComment)
+
+  /* .post(("/comment/:commentId"),commentController.createComment) */
   
   .patch(("/comment/:commentId"),commentController.updateComment)
 
   .delete(("/comment/:commentId"),commentController.deleteComment)
 
-
+  .post("/prueba",(req,res)=>{
+    console.log(req.body)
+  })
+  .get("/prueba",(req,res)=>{
+    res.send("prueba")
+  })
 module.exports=router 

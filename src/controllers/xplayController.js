@@ -2,7 +2,6 @@ const databaseVideo = require("../database/video")
 
 const getVideos=async (req,res)=>{
   const Videos= await databaseVideo.getVideos();
-  console.log(Videos,5)
   if(Videos.length==0){
     res.json({"message":"no se encontro video"})
   }else{
@@ -12,7 +11,6 @@ const getVideos=async (req,res)=>{
 const getVideo=async (req,res)=>{
   const {videoId} = req.params
   const Videos= await databaseVideo.getVideo(videoId);
-  console.log(Videos,5)
   if(Videos.length==0){
     res.json({"message":"no se encontro video"})
   }else{

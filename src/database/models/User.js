@@ -3,6 +3,8 @@ const {Schema,model} = require('mongoose')
 const UserSchema = new Schema({
   name:String,
   img:String,
+  email:String,
+  password:String,
   subscribed:Number
 })
 

@@ -8,11 +8,22 @@ const getComments =async ()=>{
 }
 
 const getComment =async (id)=>{
-  return await Comment.findById(id)
+  return await Comment.find({idVideo:id})
 }
 
 
-const createComment =async (body)=>{
+const createComment =async (idVideo,body)=>{
+  let video= await getComment(idVideo)
+
+    /* console.log(video[0].comments) */
+    let comentario = video[0].comments
+   let comentarios=[...comentario,body]
+  console.log(21,comentarios)
+  return  Comment.updateOne({idVideo:idVideo},{$set:{comments:comentarios}})
+
+}
+/* createComment("63842664d616d6888a56467b") */
+/* const createComment =async (idVideo,body)=>{
 
   const {idVideo, comments} = body
     if(!idVideo ) return 
@@ -24,7 +35,7 @@ const createComment =async (body)=>{
   
   return newComment.save()
 
-}
+} */
 
 
 const deleteComment =async (userId)=>{

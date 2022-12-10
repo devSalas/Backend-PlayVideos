@@ -15,17 +15,27 @@ const getUser=async (req,res)=>{
   const {userId} = req.params
   console.log(userId)
   const User= await databaseUser.getUser(userId);
-  if(User.length==0){
-    res.json({"message":"no se encontro video"})
-  }else{
-      res.json(User)
-  }
+  if(User.length==0) return res.json({"message":"no se encontro el usuario"})
+  
+  res.json(User)
+  
+}
+
+const verificarUsuario = async (req,res)=>{
+
+  const {body} =req
+  console.log(body)
+  const User= await databaseUser.verificarUsuario(body);
+  console.log(28,User)
+  if(User.length<=0) return res.json({"message":"no se encontro el usuario"})
+  
+  res.json(User)
+  
 }
 
 
 const createUser=async (req,res)=>{
 
-  console.log(req.body,15)
   const User= await databaseUser.createUser(req.body);
   console.log(User,17)
 
@@ -56,6 +66,7 @@ const deleteUser=async(req,res)=>{
 module.exports={
   getUsers,
   getUser,
+  verificarUsuario,
   createUser,
   deleteUser,
   updateUser
