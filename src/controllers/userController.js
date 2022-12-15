@@ -13,7 +13,7 @@ const getUsers=async (req,res)=>{
 
 const getUser=async (req,res)=>{
   const {userId} = req.params
-  console.log(userId)
+  console.log(16,userId)
   const User= await databaseUser.getUser(userId);
   if(User.length==0) return res.json({"message":"no se encontro el usuario"})
   
@@ -27,7 +27,7 @@ const verificarUsuario = async (req,res)=>{
   console.log(body)
   const User= await databaseUser.verificarUsuario(body);
   console.log(28,User)
-  if(User.length<=0) return res.json({"message":"no se encontro el usuario"})
+  if(User == null || User == undefined) return res.json({"message":"no se encontro el usuario"})
   
   res.json(User)
   
@@ -37,7 +37,6 @@ const verificarUsuario = async (req,res)=>{
 const createUser=async (req,res)=>{
 
   const User= await databaseUser.createUser(req.body);
-  console.log(User,17)
 
   res.json(User)
 

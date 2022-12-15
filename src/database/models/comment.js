@@ -27,5 +27,4 @@ CommentsVideoSchema.set('toJSON',{
 
 const Comment= model("Comentario",CommentsVideoSchema)
 
-module.exports = Comment
-
+module.exports =Comment

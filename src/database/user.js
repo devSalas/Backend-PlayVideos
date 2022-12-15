@@ -5,21 +5,27 @@ const User = require("./models/User");
 const getUsers = async () => {
   return await User.find({});
 };
+
+
 const getUser = async (id) => {
   return await User.findById(id);
 };
 const verificarUsuario = async (body) => {
   const { email, password } = body;
+  console.log(body)
   console.log(18, email, password);
   return await User.findOne({ email: email, password: password });
 };
 
+
 const createUser = async (body) => {
-  console.log(body);
+  console.log(body)
+
   const { name, subscribed, img, email, password } = body;
-  if (!name || !email) return;
+  if (!name || !email) return {message:"no se encontro nombre o email"};
 
   const getUsuario = await User.find({ email: email });
+
   console.log(25, getUsuario);
   if (getUsuario.length > 0)
     return { message: "el usuario ya existe", status: false, user: getUsuario };
@@ -32,8 +38,9 @@ const createUser = async (body) => {
     password,
     date: new Date(),
   });
-
-  return { user: newUser.save(), status: true, message: "usuario creado" };
+  const user = await newUser.save()
+  
+  return { user, status: true, message: "usuario creado" };
 };
 
 const deleteUser = async (userId) => {

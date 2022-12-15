@@ -24,9 +24,8 @@ const getComment=async (req,res)=>{
 const createComment=async (req,res)=>{
   const {videoId}=req.params
   const {body}=req
-  /* console.log(27,videoId,body) */
   const comment= await databaseComment.createComment(videoId,body);
-
+  console.log(comment);
   res.json(comment)
 
 }
